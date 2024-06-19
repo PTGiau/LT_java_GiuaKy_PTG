@@ -70,6 +70,6 @@ public class nhanvienController {
     @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
         nhanvienService.deletenhanvien(id);
-        return "redirect:/books";
+        return "redirect:/nhanviens";
     }
 }

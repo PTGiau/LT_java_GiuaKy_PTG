@@ -8,7 +8,7 @@
 <body>
 <th:block th:replace="layout::header"></th:block>
 <div class="container">
-    <h1>Sửa sách</h1>
+    <h1>Sửa Thông tin</h1>
     <form th:action="@{/nhanviens/edit/{id}(id=${nhanvien.id})}"  th:object="${nhanvien}" method="post">
         <input type="hidden" th:field="*{id}">
         <div class="col-6 mb-3">
