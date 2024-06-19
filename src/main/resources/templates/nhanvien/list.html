@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Nhân Viên</title>
+    <th:block th:replace="layout::link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1 th:text="${title}"></h1>
+    <table class="table">
+        <tr>
+            <th>Mã Nhân Viên</th>
+            <th>Tên Nhân Viên</th>
+            <th>Phái</th>
+            <th>Nơi Sinh</th>
+            <th>Tên Phòng</th>
+            <th>Lương</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="nhanvien : ${nhanvien}">
+            <td th:text="${nhanvien.MaNV}"></td>
+            <td th:text="${nhanvien.TenNV}"></td>
+            <td>
+                <div th:switch="${nhanvien.Phai}">
+                    <img src="https://e7.pngegg.com/pngimages/358/473/png-clipart-computer-icons-user-profile-person-child-heroes.png" alt="NAM" th:case="'NAM'" height="50px" width="50px"></img>
+                    <img src="https://th.bing.com/th/id/OIP.Q2MSQt2Tx4FwtvHa-kb43AHaHa?rs=1&pid=ImgDetMain" alt="NU" th:case="'NU'" height="50px" width="50px"></img>
+                </div>
+            </td>
+            <td th:text="${nhanvien.NoiSinh}"></td>
+            <td th:text="${nhanvien.phongban.Roomname}"></td>
+            <td th:text="${nhanvien.Luong}"></td>
+            <td>
+                <a th:href="@{/nhanviens/edit/{id}(id=${nhanvien.id})}">Edit</a> |
+                <a th:href="@{/nhanviens/delete/{id}(id=${nhanvien.id})}"
+                   onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>
